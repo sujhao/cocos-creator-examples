@@ -1,4 +1,4 @@
-[平抛高抛发射效果](./)
+[平抛高抛发射效果-文章](https://mp.weixin.qq.com/s/5GgL_pONl0bQPxFz4xtjmQ
 
 ![](./../img/parabola.gif)
 

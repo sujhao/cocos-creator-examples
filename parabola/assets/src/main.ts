@@ -64,7 +64,7 @@ export default class Main extends cc.Component {
             const t1 = (-b + Math.sqrt(delta)) / (2 * a); // 平抛 tan 值
             const t2 = (-b - Math.sqrt(delta)) / (2 * a); // 高抛 tan 值
 
-            // 二、四象限角度要加 180
+            // 二、三象限角度要加 180
             const alpha1 = Math.atan(t1) + (s < 0 ? Math.PI : 0);
             const alpha2 = Math.atan(t2) + (s < 0 ? Math.PI : 0);
 

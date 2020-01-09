@@ -1,6 +1,14 @@
 # cocos-creator-examples
 cocos creator 一些使用实例
 
+## [meshTexture](./meshTexture)
+
+[mesh 多边形裁剪图片](./meshTexture)
+
+![](./img/meshTexture.jpg)
+
+cocos creator v2.2.2 
+
 ## [parabola](./parabola)
 
 [平抛高抛发射效果-文章](https://mp.weixin.qq.com/s/5GgL_pONl0bQPxFz4xtjmQ)

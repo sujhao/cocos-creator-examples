@@ -1,5 +1,4 @@
-// author : lamyoung.com
-
+// author: lamyoung.com
 
 const gfx = cc.gfx;
 
@@ -26,7 +25,6 @@ cc.Class({
         },
 
         _offset: cc.v2(0, 0),
-
         /**
          * !#en Position offset
          * !#zh 位置偏移量
@@ -86,44 +84,59 @@ cc.Class({
             },
             set: function (value) {
                 this._vertexes = value;
-                if (this.temp_refresh || !CC_EDITOR)
+                this._updateMesh();
+                if (this.temp_refresh || !CC_EDITOR) {
                     this._applyVertexes();
+                }
             },
             type: [cc.Vec2]
         }
-
     },
 
     onLoad() {
-        const vfmt = new gfx.VertexFormat([
-            { name: gfx.ATTR_POSITION, type: gfx.ATTR_TYPE_FLOAT32, num: 2 },
-            { name: gfx.ATTR_UV0, type: gfx.ATTR_TYPE_FLOAT32, num: 2 },
-        ]);
+        this._meshCache = {};
 
-        const mesh = new cc.Mesh();
-        mesh.init(vfmt, 9, true);
-        this.mesh = mesh;
+        this._updateMesh();
 
         let renderer = this.node.getComponent(cc.MeshRenderer);
         if (!renderer) {
             renderer = this.node.addComponent(cc.MeshRenderer);
         }
-        // console.log(renderer)
+
         renderer.mesh = null;
         this.renderer = renderer;
+        let builtinMaterial = new cc.Material();
+        builtinMaterial.copy(cc.Material.getBuiltinMaterial("unlit"));
+        renderer.setMaterial(0, builtinMaterial);
 
         this._applySpriteFrame();
         this._applyVertexes();
     },
 
+    _updateMesh() {
+        let mesh = this._meshCache[this.vertexes.length];
+        if (!mesh) {
+            mesh = new cc.Mesh();
+            mesh.init(new gfx.VertexFormat([
+                { name: gfx.ATTR_POSITION, type: gfx.ATTR_TYPE_FLOAT32, num: 2 },
+                { name: gfx.ATTR_UV0, type: gfx.ATTR_TYPE_FLOAT32, num: 2 },
+            ]), this.vertexes.length, true);
+            this._meshCache[this.vertexes.length] = mesh;
+        }
+        this.mesh = mesh;
+        // cc.log('_updateMesh');
+    },
+
     _applyVertexes() {
         // cc.log('_applyVertexes');
-        const mesh = this.mesh;
 
+        // 设置坐标
+        const mesh = this.mesh;
         mesh.setVertices(gfx.ATTR_POSITION, this.vertexes);
 
-        let uvs = [];
         if (this.texture) {
+            let uvs = [];
+            // 计算uv
             for (const pt of this.vertexes) {
                 const vx = (pt.x + this.texture.width / 2 + this.offset.x) / this.texture.width;
                 const vy = 1.0 - (pt.y + this.texture.height / 2 + this.offset.y) / this.texture.height;
@@ -133,10 +146,12 @@ cc.Class({
         }
 
         if (this.vertexes.length >= 3) {
+            // 计算顶点索引 
             let ids = [];
             const vertexes = [].concat(this.vertexes);
 
-            let index = 0;
+            // 多边形切割，未实现相交的复杂多边形，确保顶点按顺序且围成的线不相交
+            let index = 0, rootIndex = -1;
             while (vertexes.length > 3) {
                 const p1 = vertexes[index];
                 const p2 = vertexes[(index + 1) % vertexes.length];
@@ -155,28 +170,35 @@ cc.Class({
                         }
                     }
                     if (!isIn) {
-                        // 切耳朵
+                        // 切耳朵，是凸点，且没有其他点在三角形内
                         ids = ids.concat([this.vertexes.indexOf(p1), this.vertexes.indexOf(p2), this.vertexes.indexOf(p3)]);
                         vertexes.splice(vertexes.indexOf(p2), 1);
+                        rootIndex = index;
                     } else {
                         index = (index + 1) % vertexes.length;
+                        if (index === rootIndex) {
+                            cc.log('循环一圈未发现');
+                            break;
+                        }
                     }
                 } else {
                     index = (index + 1) % vertexes.length;
+                    if (index === rootIndex) {
+                        cc.log('循环一圈未发现');
+                        break;
+                    }
                 }
             }
-            // cc.log(vertexes);
             ids = ids.concat(vertexes.map(v => { return this.vertexes.indexOf(v) }));
-            // cc.log('ids');
-            // cc.log(ids);
             mesh.setIndices(ids);
-            if (!this.renderer.mesh) {
+
+            if (this.renderer.mesh != mesh) {
+                // mesh 完成后再赋值给 MeshRenderer , 否则模拟器(mac)会跳出
                 this.renderer.mesh = mesh;
             }
         } else {
 
         }
-
     },
 
     // 判断一个点是否在三角形内
@@ -194,6 +216,7 @@ cc.Class({
             let material = renderer._materials[0];
             // Reset material
             let texture = this.spriteFrame.getTexture();
+            material.define("USE_DIFFUSE_TEXTURE", true);
             material.setProperty('diffuseTexture', texture);
             this.texture = texture;
         }

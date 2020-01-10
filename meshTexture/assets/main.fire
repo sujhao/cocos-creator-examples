@@ -177,7 +177,7 @@
       "array": [
         0,
         0,
-        623.5382907247958,
+        403.56783816354846,
         0,
         0,
         0,
@@ -403,7 +403,7 @@
       "__id__": 7
     },
     "_enabled": true,
-    "_temp_refresh": true,
+    "_temp_refresh": false,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -475,9 +475,7 @@
     },
     "_enabled": true,
     "_materials": [
-      {
-        "__uuid__": "2a296057-247c-4a1c-bbeb-0548b6c98650"
-      }
+      null
     ],
     "_mesh": null,
     "_receiveShadows": false,
@@ -559,10 +557,10 @@
       "__id__": 10
     },
     "_enabled": true,
-    "_temp_refresh": true,
+    "_temp_refresh": false,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 300,
+      "x": 200,
       "y": 0
     },
     "_spriteFrame": {
@@ -631,9 +629,7 @@
     },
     "_enabled": true,
     "_materials": [
-      {
-        "__uuid__": "2a296057-247c-4a1c-bbeb-0548b6c98650"
-      }
+      null
     ],
     "_mesh": null,
     "_receiveShadows": false,

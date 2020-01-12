@@ -203,10 +203,10 @@ cc.Class({
 
     // 判断一个点是否在三角形内
     _testInTriangle(point, triA, triB, triC) {
-        let AB = triB.sub(triA), AC = triC.sub(triA), BC = triC.sub(triB), AD = point.sub(triA);
-        return (AB.cross(AC) >= 0 ^ AB.cross(AD) < 0) &&
-            (AB.cross(AC) >= 0 ^ AC.cross(AD) >= 0) &&
-            (BC.cross(AB) > 0 ^ BC.cross(point.sub(triB)) >= 0);
+        let AB = triB.sub(triA), AC = triC.sub(triA), BC = triC.sub(triB), AD = point.sub(triA), BD = point.sub(triB);
+        return (AB.cross(AC) >= 0 ^ AB.cross(AD) < 0)  // D,C 在AB同同方向
+            && (AB.cross(AC) >= 0 ^ AC.cross(AD) >= 0) // D,B 在AC同同方向
+            && (BC.cross(AB) > 0 ^ BC.cross(BD) >= 0); // D,A 在BC同同方向
     },
 
     _applySpriteFrame() {

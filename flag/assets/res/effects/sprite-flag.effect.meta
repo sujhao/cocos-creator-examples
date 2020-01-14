@@ -1,0 +1,17 @@
+{
+  "ver": "1.0.23",
+  "uuid": "79e097c2-a2c2-470c-b1c6-01e00c4e2c78",
+  "compiledShaders": [
+    {
+      "glsl1": {
+        "vert": "\nprecision highp float;\nuniform mat4 cc_matWorld;\nuniform vec4 cc_time;\nuniform mat4 cc_matViewProj;\n\nattribute vec3 a_position;\n\n#if USE_TEXTURE\n  attribute mediump vec2 a_uv0;\n  varying mediump vec2 v_uv0;\n#endif\n\nvoid main () {\n\n  float pz = 5.0 * sin(cc_time.x * 5.0  + a_position.x * 10.0);\n  vec4 position = vec4(a_position.x, a_position.y + pz, a_position.z + pz, 1);\n\n  #if USE_TEXTURE\n    v_uv0 = a_uv0; \n  #endif\n  gl_Position = cc_matViewProj * cc_matWorld * position;\n}\n",
+        "frag": "\nprecision highp float;\n\n#if USE_TEXTURE\n  varying vec2 v_uv0;\n  uniform sampler2D texture;\n#endif\n\nvoid main () {\n  vec4 o = vec4(1, 1, 1, 1);\n\n  #if USE_TEXTURE\n    o *= texture2D(texture, v_uv0);\n  #endif\n  gl_FragColor = o;\n}\n"
+      },
+      "glsl3": {
+        "vert": "\nprecision highp float;\nuniform CCLocal {\n  mat4 cc_matWorld;\n  mat4 cc_matWorldIT;\n};\nuniform CCGlobal {\n  vec4 cc_time;\n\n  vec4 cc_screenSize;\n\n  vec4 cc_screenScale;\n\n  vec4 cc_nativeSize;\n\n  mat4 cc_matView;\n  mat4 cc_matViewInv;\n  mat4 cc_matProj;\n  mat4 cc_matProjInv;\n  mat4 cc_matViewProj;\n  mat4 cc_matViewProjInv;\n  vec4 cc_cameraPos;\n\n  vec4 cc_exposure;\n\n  vec4 cc_mainLitDir;\n\n  vec4 cc_mainLitColor;\n\n  vec4 cc_ambientSky;\n  vec4 cc_ambientGround;\n};\n\nin vec3 a_position;\n\n#if USE_TEXTURE\n  in mediump vec2 a_uv0;\n  out mediump vec2 v_uv0;\n#endif\n\nvoid main () {\n\n  float pz = 5.0 * sin(cc_time.x * 5.0  + a_position.x * 10.0);\n  vec4 position = vec4(a_position.x, a_position.y + pz, a_position.z + pz, 1);\n\n  #if USE_TEXTURE\n    v_uv0 = a_uv0; \n  #endif\n  gl_Position = cc_matViewProj * cc_matWorld * position;\n}\n",
+        "frag": "uniform CCGlobal {\n  vec4 cc_time;\n\n  vec4 cc_screenSize;\n\n  vec4 cc_screenScale;\n\n  vec4 cc_nativeSize;\n\n  mat4 cc_matView;\n  mat4 cc_matViewInv;\n  mat4 cc_matProj;\n  mat4 cc_matProjInv;\n  mat4 cc_matViewProj;\n  mat4 cc_matViewProjInv;\n  vec4 cc_cameraPos;\n\n  vec4 cc_exposure;\n\n  vec4 cc_mainLitDir;\n\n  vec4 cc_mainLitColor;\n\n  vec4 cc_ambientSky;\n  vec4 cc_ambientGround;\n};\n\nprecision highp float;\n\n#if USE_TEXTURE\n  in vec2 v_uv0;\n  uniform sampler2D texture;\n#endif\n\nvoid main () {\n  vec4 o = vec4(1, 1, 1, 1);\n\n  #if USE_TEXTURE\n    o *= texture(texture, v_uv0);\n  #endif\n  gl_FragColor = o;\n}\n"
+      }
+    }
+  ],
+  "subMetas": {}
+}

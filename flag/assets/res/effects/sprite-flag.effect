@@ -1,0 +1,68 @@
+// Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.  
+
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: vs
+      frag: fs
+      blendState:
+        targets:
+        - blend: true
+      rasterizerState:
+        cullMode: none
+      properties:
+        texture: { value: white }
+}%
+
+
+CCProgram vs %{
+// Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+
+  precision highp float;
+
+  #include <cc-local>
+  #include <cc-global>
+  // #include <skinning>
+
+  in vec3 a_position;
+
+  #if USE_TEXTURE
+    in mediump vec2 a_uv0;
+    out mediump vec2 v_uv0;
+  #endif
+
+  void main () {
+    // float angleSpanH = 4.0 * 3.14159265;
+    // float startX = 0.0;
+    // float curAngle = cc_time.x*10.0 - (a_position.x-startX)/200.0 * angleSpanH;
+    float pz = 5.0 * sin(cc_time.x * 5.0  + a_position.x * 10.0);
+    vec4 position = vec4(a_position.x, a_position.y + pz, a_position.z + pz, 1);
+
+    // SKIN_VERTEX(position);
+    #if USE_TEXTURE
+      v_uv0 = a_uv0; 
+    #endif
+    gl_Position = cc_matViewProj * cc_matWorld * position;
+  }
+}%
+
+
+CCProgram fs %{
+  #include <cc-global>
+
+  precision highp float;
+  
+  #if USE_TEXTURE
+    in vec2 v_uv0;
+    uniform sampler2D texture;
+  #endif
+
+  void main () {
+    vec4 o = vec4(1, 1, 1, 1);
+
+    #if USE_TEXTURE
+      o *= texture(texture, v_uv0);
+    #endif
+    gl_FragColor = o;
+  }
+}%

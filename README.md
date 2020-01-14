@@ -3,7 +3,7 @@ cocos creator 一些使用实例
 
 ## [meshTexture](./meshTexture)
 
-[mesh 多边形裁剪图片](./meshTexture)
+[mesh 多边形裁剪图片-文章](https://mp.weixin.qq.com/s/r1IEcFXdy4O2Fn4IPs1m_w)
 
 ![](./img/meshTexture.jpg)
 

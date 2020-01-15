@@ -51,12 +51,126 @@ cc.Class({
             type: cc.SpriteFrame,
         },
 
+        _row: 10,
+        /**
+         * !#zh 网格行数
+         * @property cell_size
+         * @type {Number}
+         */
+        row: {
+            tooltip: '网格行数',
+            get: function () {
+                return this._row;
+            },
+            set: function (value) {
+                value <= 0 ? value = 1 : '';
+                if (this._row !== value) {
+                    this._row = value;
+                    this._updateMesh();
+                    this._applyVertexes();
+                }
+            },
+            min: 1,
+            step: 1,
+        },
+
+        _col: 20,
+        /**
+         * !#zh 网格列数
+         * @property cell_size
+         * @type {Number}
+         */
+        col: {
+            tooltip: '网格列数',
+            get: function () {
+                return this._col;
+            },
+            set: function (value) {
+                value <= 0 ? value = 1 : '';
+                if (this._col !== value) {
+                    this._col = value;
+                    this._updateMesh();
+                    this._applyVertexes();
+                }
+            },
+            min: 1,
+            step: 1,
+        },
+
+
+        _speed: 10,
+        /**
+         * !#zh 速度
+         * @property cell_size
+         * @type {Number}
+         */
+        speed: {
+            tooltip: '速度',
+            get: function () {
+                return this._speed;
+            },
+            set: function (value) {
+                value <= 0 ? value = 0.1 : '';
+                if (this._speed !== value) {
+                    this._speed = value;
+                    this._updateMaterial();
+                }
+            },
+            min: 0.1,
+            step: 0.1,
+        },
+
+
+        _amplitude: 5,
+        /**
+         * !#zh 幅度
+         * @property cell_size
+         * @type {Number}
+         */
+        amplitude: {
+            tooltip: '幅度',
+            get: function () {
+                return this._amplitude;
+            },
+            set: function (value) {
+                value <= 0 ? value = 0.1 : '';
+                if (this._amplitude !== value) {
+                    this._amplitude = value;
+                    this._updateMaterial();
+                }
+            },
+            min: 0.1,
+            step: 1,
+        },
+
+        _wave: 5,
+        /**
+         * !#zh 波浪
+         * @property cell_size
+         * @type {Number}
+         */
+        wave: {
+            tooltip: '波浪',
+            get: function () {
+                return this._wave;
+            },
+            set: function (value) {
+                value <= 0 ? value = 0 : '';
+                if (this._wave !== value) {
+                    this._wave = value;
+                    this._updateMaterial();
+                }
+            },
+            min: 0,
+            step: 1,
+        },
+
     },
 
     onLoad() {
         this._meshCache = {};
         this._vertexes = [];
-        this._updateMesh();
+
 
         let renderer = this.node.getComponent(cc.MeshRenderer);
         if (!renderer) {
@@ -66,6 +180,21 @@ cc.Class({
         renderer.mesh = null;
         this.renderer = renderer;
 
+        cc.loader.loadRes('mat/sprite-flag', cc.Material, (err, mat) => {
+            if (err) {
+                cc.error(err.message || err);
+                return;
+            }
+            let matt = new cc.Material();
+            matt.copy(mat)
+            cc.log(mat)
+            cc.log(matt)
+            this.renderer.setMaterial(0, matt);
+            this._updateMaterial();
+        });
+
+
+        this._updateMesh();
         this._applySpriteFrame();
         this._applyVertexes();
 
@@ -83,8 +212,6 @@ cc.Class({
         this._vertexes = [];
         const _width = this.node.width;
         const _height = this.node.height;
-        this._row = Math.ceil(_height / 10);
-        this._col = Math.ceil(_width / 10);
         for (let _row = 0; _row < this._row + 1; _row++) {
             for (let _col = 0; _col < this._col + 1; _col++) {
                 this._vertexes.push(cc.v2((_col - this._col * this.node.anchorX) * _width / this._col, (_row - this._row * this.node.anchorY) * _height / this._row));
@@ -101,6 +228,8 @@ cc.Class({
             this._meshCache[this._vertexes.length] = mesh;
         }
         this.mesh = mesh;
+
+        this._updateMaterial();
         // cc.log('_updateMesh');
     },
 
@@ -154,13 +283,25 @@ cc.Class({
     _applySpriteFrame() {
         // cc.log('_applySpriteFrame');
         if (this.spriteFrame) {
-            const renderer = this.renderer;
-            let material = renderer._materials[0];
-            // Reset material
             let texture = this.spriteFrame.getTexture();
-            material.define("USE_TEXTURE", true);
-            material.setProperty('texture', texture);
             this.texture = texture;
+            this._updateMaterial();
+        }
+    },
+
+    _updateMaterial() {
+        // Reset material
+        let material = this.renderer._materials[0];
+        if (material) {
+            if (this.texture) {
+                material.define("USE_TEXTURE", true);
+                material.setProperty('texture', this.texture);
+            }
+            material.setProperty('textureWidth', this.node.width);
+    
+            material.setProperty('speed', this.speed);
+            material.setProperty('amplitude', this.amplitude);
+            material.setProperty('wave', this.wave);
         }
     },
 });

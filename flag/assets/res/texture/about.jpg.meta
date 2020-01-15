@@ -2,7 +2,7 @@
   "ver": "2.3.3",
   "uuid": "14a78146-8e63-4820-bf83-19e55ec60148",
   "type": "sprite",
-  "wrapMode": "clamp",
+  "wrapMode": "repeat",
   "filterMode": "point",
   "premultiplyAlpha": false,
   "genMipmaps": false,

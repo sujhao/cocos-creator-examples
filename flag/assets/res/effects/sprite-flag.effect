@@ -12,19 +12,30 @@ CCEffect %{
         cullMode: none
       properties:
         texture: { value: white }
+        textureWidth: { value: 600.0 }
+        speed: { value: 10.0 }
+        amplitude: { value: 5.0 }
+        wave: { value: 5.0 }
 }%
 
 
 CCProgram vs %{
-// Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+// 微信公众号 【白玉无冰】
+// author: lamyoung.com
 
   precision highp float;
 
   #include <cc-local>
   #include <cc-global>
-  // #include <skinning>
 
   in vec3 a_position;
+
+  uniform LAMYOUMG_COM {
+    float textureWidth;
+    float speed;
+    float amplitude;
+    float wave;
+  } 
 
   #if USE_TEXTURE
     in mediump vec2 a_uv0;
@@ -32,13 +43,11 @@ CCProgram vs %{
   #endif
 
   void main () {
-    // float angleSpanH = 4.0 * 3.14159265;
-    // float startX = 0.0;
-    // float curAngle = cc_time.x*10.0 - (a_position.x-startX)/200.0 * angleSpanH;
-    float pz = 5.0 * sin(cc_time.x * 5.0  + a_position.x * 10.0);
-    vec4 position = vec4(a_position.x, a_position.y + pz, a_position.z + pz, 1);
+    float angleSpanH = wave * 3.14159265;
+    float pz = amplitude * sin(cc_time.x * speed  - (a_position.x + a_position.y) / textureWidth * angleSpanH);
+    vec4 position = vec4(a_position.x, a_position.y + pz, a_position.z, 1);
+    // vec4 position = vec4(a_position.x, a_position.y , a_position.z + pz, 1); // use in 3d
 
-    // SKIN_VERTEX(position);
     #if USE_TEXTURE
       v_uv0 = a_uv0; 
     #endif

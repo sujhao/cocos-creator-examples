@@ -16,6 +16,7 @@ CCEffect %{
         speed: { value: 10.0 }
         amplitude: { value: 5.0 }
         wave: { value: 5.0 }
+        startPos: { value: [0.0, 0.0] }
 }%
 
 
@@ -35,6 +36,7 @@ CCProgram vs %{
     float speed;
     float amplitude;
     float wave;
+    vec2 startPos;
   } 
 
   #if USE_TEXTURE
@@ -44,7 +46,7 @@ CCProgram vs %{
 
   void main () {
     float angleSpanH = wave * 3.14159265;
-    float pz = amplitude * sin(cc_time.x * speed  - (a_position.x + a_position.y) / textureWidth * angleSpanH);
+    float pz = amplitude * sin(cc_time.x * speed - (a_position.x - startPos.x + a_position.y - startPos.y) / textureWidth * angleSpanH);
     vec4 position = vec4(a_position.x, a_position.y + pz, a_position.z, 1);
     // vec4 position = vec4(a_position.x, a_position.y , a_position.z + pz, 1); // use in 3d
 

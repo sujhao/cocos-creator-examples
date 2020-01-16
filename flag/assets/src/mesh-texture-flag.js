@@ -171,24 +171,26 @@ cc.Class({
         this._meshCache = {};
         this._vertexes = [];
 
-
+        // 添加 MeshRenderer
         let renderer = this.node.getComponent(cc.MeshRenderer);
         if (!renderer) {
             renderer = this.node.addComponent(cc.MeshRenderer);
         }
-
         renderer.mesh = null;
         this.renderer = renderer;
 
+        // 加载对应材质
         cc.loader.loadRes('mat/sprite-flag', cc.Material, (err, mat) => {
             if (err) {
                 cc.error(err.message || err);
                 return;
             }
             let matt = new cc.Material();
-            matt.copy(mat)
-            cc.log(mat)
-            cc.log(matt)
+            // 拷贝一份，避免共用材料
+            matt.copy(mat);
+            // cc.log(mat)
+            // cc.log(matt)
+
             this.renderer.setMaterial(0, matt);
             this._updateMaterial();
         });
@@ -209,15 +211,20 @@ cc.Class({
     },
 
     _updateMesh() {
+
+        // 确定顶点坐标
         this._vertexes = [];
         const _width = this.node.width;
         const _height = this.node.height;
         for (let _row = 0; _row < this._row + 1; _row++) {
             for (let _col = 0; _col < this._col + 1; _col++) {
-                this._vertexes.push(cc.v2((_col - this._col * this.node.anchorX) * _width / this._col, (_row - this._row * this.node.anchorY) * _height / this._row));
+                const x = (_col - this._col * this.node.anchorX) * _width / this._col;
+                const y = (_row - this._row * this.node.anchorY) * _height / this._row;
+                this._vertexes.push(cc.v2(x, y));
             }
         };
 
+        // 绑定模型
         let mesh = this._meshCache[this._vertexes.length];
         if (!mesh) {
             mesh = new cc.Mesh();
@@ -246,9 +253,9 @@ cc.Class({
             let uvs = [];
             // 计算uv
             for (const pt of this._vertexes) {
-                const vx = (pt.x + this.texture.width * this.node.anchorX + this.offset.x) / this.texture.width;
-                const vy = 1.0 - (pt.y + this.texture.height * this.node.anchorY + this.offset.y) / this.texture.height;
-                uvs.push(cc.v2(vx, vy));
+                const u = (pt.x + this.texture.width * this.node.anchorX + this.offset.x) / this.texture.width;
+                const v = 1.0 - (pt.y + this.texture.height * this.node.anchorY + this.offset.y) / this.texture.height;
+                uvs.push(cc.v2(u, v));
             }
             mesh.setVertices(gfx.ATTR_UV0, uvs);
             // cc.log('uvs');
@@ -294,14 +301,18 @@ cc.Class({
         let material = this.renderer._materials[0];
         if (material) {
             if (this.texture) {
+                // 设置 texture 
                 material.define("USE_TEXTURE", true);
                 material.setProperty('texture', this.texture);
             }
+
+            // 设置着色器 uniform 参数
             material.setProperty('textureWidth', this.node.width);
-    
             material.setProperty('speed', this.speed);
             material.setProperty('amplitude', this.amplitude);
             material.setProperty('wave', this.wave);
+            if (this._vertexes.length > 0)
+                material.setProperty('startPos', this._vertexes[0]);
         }
     },
 });

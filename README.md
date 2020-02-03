@@ -1,9 +1,18 @@
 # cocos-creator-examples
 cocos creator 一些使用实例
 
+## [convolutions](./convolutions)
+
+利用卷积内核实现各种滤镜效果。模糊、锐化、浮雕应用尽有。
+
+cocos creator v2.2.2 
+
+![](./img/convolutions.jpg)
+
+
 ## [flag](./flag)
 
-[飘扬的旗帜 shader ](./flag)
+[飘扬的旗帜 shader - 文章](https://mp.weixin.qq.com/s/E5ZjzIFozvPRIIytmtiuTQ)
 
 ![](./img/flag.gif)
 

@@ -3,7 +3,7 @@ cocos creator 一些使用实例
 
 ## [convolutions](./convolutions)
 
-利用卷积内核实现各种滤镜效果。模糊、锐化、浮雕效果。
+[利用卷积内核实现各种滤镜效果。模糊、锐化、浮雕效果](https://mp.weixin.qq.com/s/WAajs8p69X8UJFvNiYuNDA)。
 
 cocos creator v2.2.2 
 

@@ -1,4 +1,6 @@
-// author: lamyoung.com
+// author: http://lamyoung.com/
+
+// api: https://docs.cocos.com/creator/manual/zh/extension/api/editor-framework/renderer/gizmo.html
 
 class PointsPolygonGizmo extends Editor.Gizmo {
   init() {
@@ -32,10 +34,6 @@ class PointsPolygonGizmo extends Editor.Gizmo {
        * @param event mousedown dom event
        */
       update: (dx, dy, event, i) => {
-        // Editor.log('pressx', pressx, pressy);
-
-        // 获取 gizmo 依附的节点
-        let node = this.node;
         // 获取 gizmo 依附的组件
         let target = this.target;
         if (!start_vertex) {
@@ -70,13 +68,14 @@ class PointsPolygonGizmo extends Editor.Gizmo {
     const circles = [];
     // 接下来要定义绘画函数
     this._tool.plot = (points, position) => {
+      // 移动到节点位置
       this._tool.move(position.x, position.y);
+      // 清除原来的点
       circles.forEach(v => v.radius(0));
+      // 画圆点
       points.map((v, i) => {
-        // v = this.node.convertToWorldSpaceAR(cc.v2(0, 0));
-        // v = this.worldToPixel(v);
+        // this._view.scale 编辑器缩放系数
         v = Editor.GizmosUtils.snapPixelWihVec2(v.mul(this._view.scale));
-        // Editor.log(v.y)
         let circle = circles[i];
         if (!circle) {
           circles[i] = circle = this._tool.circle()
@@ -86,6 +85,7 @@ class PointsPolygonGizmo extends Editor.Gizmo {
             .style('pointer-events', 'fill')
             // 设置鼠标样式
             .style('cursor', 'move')
+          // 注册点击事件
           this.registerMoveSvg(circle, i, { cursor: 'pointer' });
         }
         circle.center(v.x, -v.y).radius(10 * this._view.scale);

@@ -7,6 +7,7 @@ cc.Class({
 
     editor: CC_EDITOR && {
         executeInEditMode: true,
+        // inspector: 'packages://inspector/inspectors/comps/physics/points-base-collider.js',
     },
 
     properties: {
@@ -106,7 +107,7 @@ cc.Class({
         renderer.mesh = null;
         this.renderer = renderer;
         let builtinMaterial = new cc.Material();
-        builtinMaterial.copy(cc.Material.getBuiltinMaterial("unlit"));
+        builtinMaterial.copy(cc.Material.getInstantiatedBuiltinMaterial("unlit", this));   //getBuiltinMaterial
         renderer.setMaterial(0, builtinMaterial);
 
         this._applySpriteFrame();
@@ -127,6 +128,7 @@ cc.Class({
         // cc.log('_updateMesh');
     },
 
+    // 更新顶点
     _applyVertexes() {
         // cc.log('_applyVertexes');
 
@@ -209,6 +211,7 @@ cc.Class({
             && (BC.cross(AB) > 0 ^ BC.cross(BD) >= 0); // D,A 在BC同同方向
     },
 
+    // 更新图片
     _applySpriteFrame() {
         // cc.log('_applySpriteFrame');
         if (this.spriteFrame) {

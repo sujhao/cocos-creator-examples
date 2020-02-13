@@ -82,12 +82,15 @@
       },
       {
         "__id__": 13
+      },
+      {
+        "__id__": 15
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 15
+        "__id__": 18
       }
     ],
     "_prefab": null,
@@ -177,7 +180,7 @@
       "array": [
         0,
         0,
-        623.5382907247958,
+        574.1748427090829,
         0,
         0,
         0,
@@ -338,7 +341,7 @@
       "__id__": 2
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 8
@@ -492,7 +495,7 @@
       "__id__": 2
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 11
@@ -646,7 +649,7 @@
       "__id__": 2
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 14
@@ -663,8 +666,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 11,
+      "height": 11
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -767,6 +770,160 @@
       }
     ],
     "_id": "b08hh8N2VAxY/BLZaXQVpz"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "mesh_mask_editing",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 2
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 16
+      },
+      {
+        "__id__": 17
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        -155.584,
+        -32.19,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": "86mhct0+5JL7WhuFppKNUB"
+  },
+  {
+    "__type__": "6dabfYf9F9NWarX1Fo/zZxC",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 15
+    },
+    "_enabled": true,
+    "_temp_refresh": true,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 230,
+      "y": -50
+    },
+    "_spriteFrame": {
+      "__uuid__": "1b61f994-fa9d-4281-84b1-1c894358c1ea"
+    },
+    "_vertexes": [
+      {
+        "__type__": "cc.Vec2",
+        "x": 143.18237728188257,
+        "y": 193.68643556840615
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 50.50396650371055,
+        "y": 107.1914916376333
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -6.25823823840819,
+        "y": 192.96976626210653
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -109.47402570826392,
+        "y": 187.82435083726978
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -128.32269463024932,
+        "y": 79.00953837155691
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -79.32100874001529,
+        "y": -79.97235126093314
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 59.72529936747051,
+        "y": -191.0980667511554
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 191.4598723479424,
+        "y": -83.56376153377045
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 263.4908219938811,
+        "y": 69.21652204023982
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 218.95265392907896,
+        "y": 194.81943958449324
+      }
+    ],
+    "_id": "2f39ZKRg9ATqYBSwUFTxpu"
+  },
+  {
+    "__type__": "cc.MeshRenderer",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 15
+    },
+    "_enabled": true,
+    "_materials": [
+      null
+    ],
+    "_mesh": null,
+    "_receiveShadows": false,
+    "_shadowCastingMode": 0,
+    "_enableAutoBatch": false,
+    "textures": [],
+    "_id": "70uIVDp+9MoZddSVf2bNs4"
   },
   {
     "__type__": "cc.Canvas",

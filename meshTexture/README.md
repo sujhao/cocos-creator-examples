@@ -7,6 +7,8 @@ cocos creator v2.2.2
 
 ![](./../img/meshTexture.jpg)
 
+![](./../img/meshTexture.gif)
+
 ---
 
 ![](./../img/about.jpg)

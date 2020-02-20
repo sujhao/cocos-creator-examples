@@ -1,6 +1,15 @@
 # cocos-creator-examples
 cocos creator 一些使用实例
 
+## [gradient](./gradient)
+
+图像渐变-shader
+
+cocos creator v2.2.2 
+
+![](./img/gradient.gif)
+
+
 ## [convolutions](./convolutions)
 
 [利用卷积内核实现各种滤镜效果。模糊、锐化、浮雕效果](https://mp.weixin.qq.com/s/WAajs8p69X8UJFvNiYuNDA)。
@@ -24,6 +33,10 @@ cocos creator v2.2.2
 [mesh 多边形裁剪图片-文章](https://mp.weixin.qq.com/s/r1IEcFXdy4O2Fn4IPs1m_w)
 
 ![](./img/meshTexture.jpg)
+
+[用鼠标编辑的多边形裁剪-gizmo 插件入门-文章](https://mp.weixin.qq.com/s/YjH9PAWvtgPiDGxp9y7big)
+
+![](./img/meshTexture.gif)
 
 cocos creator v2.2.2 
 

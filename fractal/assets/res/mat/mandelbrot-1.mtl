@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.Material",
+  "_name": "",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "6dceba53-4ded-44c2-88d0-811d641f79a6"
+  },
+  "_defines": {
+    "USE_TEXTURE": true
+  },
+  "_props": {
+    "zoom": 0.5,
+    "offset": {
+      "__type__": "cc.Vec2",
+      "x": -0.5,
+      "y": 0
+    },
+    "outColor2": {
+      "__type__": "cc.Vec4",
+      "x": 1,
+      "y": 1,
+      "z": 0,
+      "w": 1
+    }
+  }
+}

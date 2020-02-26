@@ -1,0 +1,36 @@
+{
+  "__type__": "cc.Material",
+  "_name": "",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "0049b5f8-2cf5-409b-8bd6-e5a149bae779"
+  },
+  "_defines": {
+    "USE_TEXTURE": true
+  },
+  "_props": {
+    "c_real": 0.285,
+    "c_image": 0,
+    "zoom": 0.5,
+    "offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "outColor1": {
+      "__type__": "cc.Vec4",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "outColor2": {
+      "__type__": "cc.Vec4",
+      "x": 0.8,
+      "y": 0.8,
+      "z": 0.2,
+      "w": 1
+    }
+  }
+}

@@ -1,9 +1,21 @@
 # cocos-creator-examples
 cocos creator 一些使用实例
 
+## [fractal](./fractal)
+
+分形着色器
+
+fractal-分形的奥秘-julia-mandelbrot-shader
+
+cocos creator v2.2.2 
+
+![](./img/fractal.gif)
+
+![](./img/fractal.jpg)
+
 ## [gradient](./gradient)
 
-图像渐变-shader
+[图像渐变-shader - 文章](https://mp.weixin.qq.com/s/tN2Al3kfo4HwIBGXNjmEDA)
 
 cocos creator v2.2.2 
 
@@ -12,7 +24,7 @@ cocos creator v2.2.2
 
 ## [convolutions](./convolutions)
 
-[利用卷积内核实现各种滤镜效果。模糊、锐化、浮雕效果](https://mp.weixin.qq.com/s/WAajs8p69X8UJFvNiYuNDA)。
+[利用卷积内核实现各种滤镜效果。模糊、锐化、浮雕效果 - 文章](https://mp.weixin.qq.com/s/WAajs8p69X8UJFvNiYuNDA)
 
 cocos creator v2.2.2 
 

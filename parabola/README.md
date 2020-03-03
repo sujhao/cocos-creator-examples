@@ -6,6 +6,11 @@ cocos creator v2.0.8
 
 [在线预览](http://lamyoung.gitee.io/web/parabola/)
 
+
+qq 交流群
+
+859642112
+
 ---
 
 ![](./../img/about.jpg)

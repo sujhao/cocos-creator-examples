@@ -7,6 +7,10 @@ cocos creator v2.2.2
 
 ![](./../img/convolutions.jpg)
 
+qq 交流群
+
+859642112
+
 ---
 
 ![](./../img/about.jpg)

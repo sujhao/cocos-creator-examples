@@ -5,7 +5,7 @@ cocos creator 一些使用实例
 
 分形着色器
 
-fractal-分形的奥秘-julia-mandelbrot-shader
+[fractal-分形的奥秘-julia-mandelbrot-shader-文章](https://mp.weixin.qq.com/s/OuQaI18LwX3Lw7aRcKjDOw)
 
 cocos creator v2.2.2 
 
@@ -98,5 +98,9 @@ cocos creator v2.0.8
 cocos creator v2.0.8 
 
 ---
+
+qq 交流群
+
+859642112
 
 ![](./img/about.jpg)

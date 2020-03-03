@@ -5,6 +5,10 @@
 cocos creator v2.0.8 
 
 
+qq 交流群
+
+859642112
+
 ---
 
 ![](./../img/about.jpg)

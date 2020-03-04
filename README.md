@@ -1,6 +1,14 @@
 # cocos-creator-examples
 cocos creator 一些使用实例
 
+## [radar](./radar)
+
+雷达图
+
+cocos creator v2.2.2 
+
+![](./img/radar.jpg)
+
 ## [fractal](./fractal)
 
 分形着色器

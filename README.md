@@ -1,6 +1,16 @@
 # cocos-creator-examples
 cocos creator 一些使用实例
 
+
+## [snake](./snake)
+
+cocos creator v2.2.2 
+
+![](./img/snake.gif)
+
+[摇杆控制器！Cocos Creator!](https://mp.weixin.qq.com/s/XbmMXUuOmSL3IvAPp-ThNQ)
+
+
 ## [radar](./radar)
 
 雷达图

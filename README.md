@@ -6,7 +6,9 @@ cocos creator 一些使用实例
 
 cocos creator v2.2.2 
 
-![](./img/snake.gif)
+[贪吃蛇大作战！蛇移动的思考与实现！](https://mp.weixin.qq.com/s/qZ7CGFRmncxvQZ0Hhs4g5g)  
+
+![](./img/snake.gif)  
 
 [摇杆控制器！Cocos Creator!](https://mp.weixin.qq.com/s/XbmMXUuOmSL3IvAPp-ThNQ)
 
@@ -15,7 +17,7 @@ cocos creator v2.2.2
 
 雷达图
 
-[doc](https://mp.weixin.qq.com/s/hgybmgTHlga0KgHfz1vIfg)  
+[雷达图的一种实现](https://mp.weixin.qq.com/s/hgybmgTHlga0KgHfz1vIfg)  
 
 cocos creator v2.2.2 
 

@@ -82,7 +82,7 @@ cocos creator v2.2.2
 
 [在线预览](http://lamyoung.gitee.io/web/parabola/)
 
-cocos creator v2.0.8 
+更新至 cocos creator v2.2.2   
 
 
 ## [aimLine](./aimLine)

@@ -55,7 +55,7 @@ export default class Main extends cc.Component {
         const h = location.y - START_POS.y;
 
         // a*t^2 + b*t + c = 0
-        const a = G * s / (2 * V * V);
+        const a = G * this.rigidBody_arrow.gravityScale * s / (2 * V * V);
         const b = 1;
         const c = a - h / s;
         const delta = b * b - 4 * a * c;
@@ -100,7 +100,7 @@ export default class Main extends cc.Component {
             if (Math.abs(rigidBody.linearVelocity.x) > 0) {
                 // 计算夹角
                 const angle = rigidBody.linearVelocity.clone().signAngle(cc.v2(1, 0));
-                rigidBody.node.rotation = angle * 180 / Math.PI;
+                rigidBody.node.angle = -angle * 180 / Math.PI;
             }
         }
     }

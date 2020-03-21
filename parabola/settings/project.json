@@ -33,13 +33,13 @@
     "arrow"
   ],
   "last-module-event-record-time": 1577192491369,
-  "simulator-orientation": false,
+  "simulator-orientation": true,
   "simulator-resolution": {
-    "height": 640,
-    "width": 960
+    "height": 720,
+    "width": 1280
   },
-  "start-scene": "current",
   "use-customize-simulator": false,
-  "use-project-simulator-setting": false,
-  "assets-sort-type": "name"
+  "use-project-simulator-setting": true,
+  "assets-sort-type": "name",
+  "start-scene": "current"
 }

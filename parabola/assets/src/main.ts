@@ -25,7 +25,7 @@ export default class Main extends cc.Component {
     // 高抛线性初速度
     private _linearVelocity_2: cc.Vec2 = cc.v2(0, 0);
     // 所有箭
-    private _all_arrows: cc.RigidBody[] = []
+    private _all_arrows: cc.RigidBody[] = [];
 
     onLoad() {
         cc.director.getPhysicsManager().enabled = true;
@@ -46,10 +46,6 @@ export default class Main extends cc.Component {
 
     private onTouchStart(touch: cc.Event.EventTouch) {
         const location = this.rigidBody_arrow.node.parent.convertToNodeSpaceAR(touch.getLocation());
-
-        this.graphic_line.clear();
-        this.graphic_line.circle(location.x, location.y, 10);
-        this.graphic_line.stroke();
 
         const s = location.x - START_POS.x;
         const h = location.y - START_POS.y;
@@ -82,12 +78,43 @@ export default class Main extends cc.Component {
             this._linearVelocity_1 = cc.Vec2.ZERO;
             this._linearVelocity_2 = cc.Vec2.ZERO;
         }
+
+        this.drawArrowTrace();
+    }
+
+    // 画轨迹
+    private drawArrowTrace() {
+        this.graphic_line.clear();
+        const linearVelocity = this.getArrowFirelinearVelocity();
+
+        if (linearVelocity.x) {
+            const dt = 0.05;
+            for (let count = 0; count < 100; count++) {
+                const time = dt * count;
+                // s = v_x * t
+                const dx = linearVelocity.x * time;
+                // h = v_y * t + 0.5 * a * t * t
+                const dy = linearVelocity.y * time + 0.5 * G * this.rigidBody_arrow.gravityScale * time * time;
+                // 当前时间点坐标
+                const targetX = START_POS.x + dx;
+                const targetY = START_POS.y + dy;
+                // 坐标超过地板就不画了
+                if (targetY < -300) break;
+                this.graphic_line.circle(targetX, targetY, 8);
+            }
+        }
+        this.graphic_line.fill();
+    }
+
+    // 获取发射速度
+    private getArrowFirelinearVelocity() {
+        return this.toggle_arrow.isChecked ? this._linearVelocity_2.clone() : this._linearVelocity_1.clone();
     }
 
     private _index = 0;
     private fireArrow() {
-        const linearVelocity = this.toggle_arrow.isChecked ? this._linearVelocity_2.clone() : this._linearVelocity_1.clone()
-        if (Math.abs(linearVelocity.x) > 0) {
+        const linearVelocity = this.getArrowFirelinearVelocity();
+        if (linearVelocity.x) {
             const rigidBody_arrow = this._all_arrows[this._index++ % this._all_arrows.length];
             rigidBody_arrow.node.setPosition(START_POS);
             rigidBody_arrow.node.getComponentInChildren(cc.MotionStreak).reset();
@@ -97,7 +124,7 @@ export default class Main extends cc.Component {
 
     update() {
         for (const rigidBody of this._all_arrows) {
-            if (Math.abs(rigidBody.linearVelocity.x) > 0) {
+            if (rigidBody.linearVelocity.x) {
                 // 计算夹角
                 const angle = rigidBody.linearVelocity.clone().signAngle(cc.v2(1, 0));
                 rigidBody.node.angle = -angle * 180 / Math.PI;

@@ -3,7 +3,7 @@ cocos creator 一些使用实例
 
 ## [splash](./splash)
 
-物体随机飞溅运动
+[物体随机飞溅运动！ Cocos Creator!](https://mp.weixin.qq.com/s/Qu9Uy55KvUX5sSLt_PTUJQ)  
 
 使用 box-muller 算法 产生正态分布。
 
@@ -85,6 +85,10 @@ cocos creator v2.2.2
 cocos creator v2.2.2 
 
 ## [parabola](./parabola)
+
+新增瞄准线
+
+![](./img/parabola2.gif)
 
 [平抛高抛发射效果-文章](https://mp.weixin.qq.com/s/5GgL_pONl0bQPxFz4xtjmQ)
 

@@ -1,0 +1,45 @@
+{
+  "collision-matrix": [
+    [
+      true,
+      true
+    ],
+    [
+      true,
+      true
+    ]
+  ],
+  "design-resolution-height": 640,
+  "design-resolution-width": 960,
+  "excluded-modules": [
+    "Geom Utils",
+    "3D",
+    "3D Primitive"
+  ],
+  "facebook": {
+    "appID": "",
+    "audience": {
+      "enable": false
+    },
+    "enable": false,
+    "live": {
+      "enable": false
+    }
+  },
+  "fit-height": true,
+  "fit-width": true,
+  "group-list": [
+    "default",
+    "water"
+  ],
+  "last-module-event-record-time": 1577192491369,
+  "simulator-orientation": false,
+  "simulator-resolution": {
+    "height": 480,
+    "width": 800
+  },
+  "use-customize-simulator": false,
+  "use-project-simulator-setting": true,
+  "assets-sort-type": "name",
+  "start-scene": "030ee62c-e45f-421d-af65-bff00489cb68"
+}

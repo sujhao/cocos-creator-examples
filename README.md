@@ -1,6 +1,14 @@
 # cocos-creator-examples
 cocos creator 一些使用实例
 
+## [water](./water)
+
+欢乐水杯(happay glass)的流体实现！
+
+cocos creator v2.2.2 
+
+![](./img/water.gif) 
+
 ## [splash](./splash)
 
 [物体随机飞溅运动！ Cocos Creator!](https://mp.weixin.qq.com/s/Qu9Uy55KvUX5sSLt_PTUJQ)  
@@ -86,11 +94,11 @@ cocos creator v2.2.2
 
 ## [parabola](./parabola)
 
-新增瞄准线
+[新增瞄准线-文章](https://mp.weixin.qq.com/s/Z-7zQuvjIaBzyQRJslH7bQ)  
 
 ![](./img/parabola2.gif)
 
-[平抛高抛发射效果-文章](https://mp.weixin.qq.com/s/5GgL_pONl0bQPxFz4xtjmQ)
+[平抛高抛发射效果-文章](https://mp.weixin.qq.com/s/5GgL_pONl0bQPxFz4xtjmQ)  
 
 ![](./img/parabola.gif)
 

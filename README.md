@@ -1,6 +1,17 @@
 # cocos-creator-examples
 cocos creator 一些使用实例
 
+
+## [attacked](./attacked) 
+
+攻击闪白效果，shader入门
+
+cocos creator v2.2.2 
+
+![](./img/attacked.gif)  
+
+
+
 ## [water](./water)
 
 [欢乐水杯(happay glass)的流体实现！](https://mp.weixin.qq.com/s/8Kz0l46YWxcx6cLukAnt9w)  

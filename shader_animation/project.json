@@ -1,0 +1,9 @@
+{
+  "engine": "cocos2d-html5",
+  "packages": "packages",
+  "version": "2.3.3",
+  "name": "shader_animation",
+  "uuid": "09fb0c64-7d51-446c-8929-90346bd13cbf",
+  "id": "a503ee10-5014-4918-a54b-bcf73c0dfbe5",
+  "isNew": false
+}
